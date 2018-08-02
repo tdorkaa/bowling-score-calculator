@@ -28,8 +28,8 @@ describe('bowlingScoreCalculator', function() {
   it('should return correct result when the last roll in the 10th frame is spare', function () {
     expect(bowlingScoreCalculator([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [5, '/', 5]])).to.equal(15);
   });
-
-  it('should return correct result when the last roll in the 10th frame is spare', function () {
-    expect(bowlingScoreCalculator([["X"], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(15);
-  });
+  //
+  // it('should return correct result when the last roll in the 10th frame is spare', function () {
+  //   expect(bowlingScoreCalculator([["X"], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(15);
+  // });
 });

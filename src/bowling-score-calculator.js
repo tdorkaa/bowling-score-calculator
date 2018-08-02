@@ -8,12 +8,11 @@ function getFrameResult(frame, scoreSheet, frameIndex) {
     const isSpare = frame[1] === "/";
     const maxPin = 10;
     const isLastFrame = frameIndex;
-    if(isLastFrame && isSpare) {
-        return maxPin + frame[2];
+
+    if (isSpare){
+        return  isLastFrame ? maxPin + frame[2] : maxPin + scoreSheet[frameIndex+1][0]
     }
-    if(isSpare) {
-        return maxPin + scoreSheet[frameIndex+1][0];
-    }
+
     return frame[0] + frame[1];
 }
 
