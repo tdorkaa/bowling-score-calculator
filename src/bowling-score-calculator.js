@@ -15,7 +15,7 @@ function getFrameResult(frame, scoreSheet, frameIndex) {
     }
 
     if (isStrike) {
-        return maxPin;
+        return maxPin + scoreSheet[frameIndex+1][0] + scoreSheet[frameIndex+1][1];
     }
 
     return frame[0] + frame[1];

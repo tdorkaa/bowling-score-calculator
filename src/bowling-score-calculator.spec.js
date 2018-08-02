@@ -33,7 +33,7 @@ describe('bowlingScoreCalculator', function() {
     expect(bowlingScoreCalculator([[0, "/"], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(10);
   });
 
-  it('should return correct result when strike is followed by two 0 rolls', function () {
-    expect(bowlingScoreCalculator([["X"], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(10);
+  it('should return correct result when strike is followed by two rolls', function () {
+    expect(bowlingScoreCalculator([["X"], [4, 5], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(28);
   });
 });
