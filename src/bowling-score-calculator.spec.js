@@ -12,4 +12,8 @@ describe('bowlingScoreCalculator', function() {
   it('should return 1 when the first roll is 1 and all the other are 0', function () {
     expect(bowlingScoreCalculator([[1, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(1);
   });
+
+  it('should return 5 when the first roll is 1, the second is 4 and all the other are 0', function () {
+    expect(bowlingScoreCalculator([[1, 4], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(5);
+  });
 });
