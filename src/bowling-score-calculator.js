@@ -7,7 +7,7 @@ function bowlingScoreCalculator(scoreSheet) {
 function getFrameResult(frame, scoreSheet, frameIndex) {
     const isSpare = frame[1] === "/";
     const maxPin = 10;
-    const isLastFrame = frameIndex;
+    const isLastFrame = frameIndex == 9;
     const isStrike = frame[0] === "X";
 
     if (isSpare){
@@ -15,10 +15,20 @@ function getFrameResult(frame, scoreSheet, frameIndex) {
     }
 
     if (isStrike) {
-        return maxPin + scoreSheet[frameIndex+1][0] + scoreSheet[frameIndex+1][1];
+        return maxPin + getNumericValueOf(getNextFrame(frameIndex, scoreSheet));
     }
 
+    return getNumericValueOf(frame);
+}
+
+function getNumericValueOf(frame)
+{
     return frame[0] + frame[1];
+}
+
+function getNextFrame(currentFrameIndex, scoreSheet)
+{
+    return scoreSheet[currentFrameIndex+1];
 }
 
 module.exports = bowlingScoreCalculator;
