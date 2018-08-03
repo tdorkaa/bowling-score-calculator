@@ -5,12 +5,11 @@ function bowlingScoreCalculator(scoreSheet) {
 }
 
 function getFrameResult(frame, scoreSheet, frameIndex) {
-    const isSpare = frame[1] === "/";
     const maxPin = 10;
     const isLastFrame = frameIndex === 9;
     const isStrike = frame[0] === "X";
 
-    if (isSpare){
+    if (isSpare(frame[1])){
         let rollToAdd = isLastFrame ? frame[2] : scoreSheet[frameIndex+1][0];
         return  maxPin + getNumericValueOfRoll(rollToAdd);
     }
@@ -22,12 +21,16 @@ function getFrameResult(frame, scoreSheet, frameIndex) {
     return getNumericValueOfFrame(frame);
 }
 
+function isSpare(roll) {
+    return roll === "/"
+}
+
 function getNumericValueOfRoll(roll) {
     return roll === "X" ? 10 : roll;
 }
 function getNumericValueOfFrame(frame)
 {
-    return frame[0] + frame[1];
+    return isSpare(frame[1]) ? 10 : frame[0] + frame[1];
 }
 
 function getNextFrame(currentFrameIndex, scoreSheet)

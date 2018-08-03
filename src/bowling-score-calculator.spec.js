@@ -56,6 +56,10 @@ describe('bowlingScoreCalculator', function() {
             expect(bowlingScoreCalculator([[0,0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X", 2, 2]])).to.equal(14);
         });
 
+        it('should return correct result when a strike is followed by non-bonus roll and a spare', function () {
+            expect(bowlingScoreCalculator([["X"], [5, "/"], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(30);
+        });
+
         // it('should return correct result when the last frame is a strike and it is followed by two rolls', function () {
         //   expect(bowlingScoreCalculator([[0,0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X", "X", 2]])).to.equal(22);
         // });
