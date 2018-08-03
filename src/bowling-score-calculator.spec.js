@@ -41,6 +41,10 @@ describe('bowlingScoreCalculator', function() {
           expect(bowlingScoreCalculator([[0, "/"], ["X"], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(30);
         });
 
+        it('should return correct result when in the last frame spare is followed by a strike', function () {
+          expect(bowlingScoreCalculator([[0, 0], [0,0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [5, "/", "X"]])).to.equal(20);
+        });
+
     });
 
     context('strike tests', function(){

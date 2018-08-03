@@ -11,7 +11,7 @@ function getFrameResult(frame, scoreSheet, frameIndex) {
     const isStrike = frame[0] === "X";
 
     if (isSpare){
-        return  isLastFrame ? maxPin + frame[2] : maxPin + getNumericValueOfNextRoll(scoreSheet[frameIndex+1][0]);
+        return  isLastFrame ? maxPin + getNumericValueOfRoll(frame[2]) : maxPin + getNumericValueOfRoll(scoreSheet[frameIndex+1][0]);
     }
 
     if (isStrike) {
@@ -21,7 +21,7 @@ function getFrameResult(frame, scoreSheet, frameIndex) {
     return getNumericValueOf(frame);
 }
 
-function getNumericValueOfNextRoll(nextRoll) {
+function getNumericValueOfRoll(nextRoll) {
     return nextRoll === "X" ? 10 : nextRoll;
 }
 function getNumericValueOf(frame)
