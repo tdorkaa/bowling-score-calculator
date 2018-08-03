@@ -68,6 +68,14 @@ describe('bowlingScoreCalculator', function() {
             expect(bowlingScoreCalculator([["X"], ["X"], ["X"], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(60);
         });
 
+        it('should return correct result when a strike is in the 9th frame followed by a strike', function () {
+            expect(bowlingScoreCalculator([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X"], ["X", "X", "X"]])).to.equal(60);
+        });
+
+        it('should return correct result when a strike is in the 9th frame followed by a spare', function () {
+            expect(bowlingScoreCalculator([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X"], [5, "/", 2]])).to.equal(32);
+        });
+
         // it('should return correct result when the last frame is a strike and it is followed by two rolls', function () {
         //   expect(bowlingScoreCalculator([[0,0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X", "X", 2]])).to.equal(22);
         // });

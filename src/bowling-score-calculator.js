@@ -16,10 +16,13 @@ function getFrameResult(frame, scoreSheet, frameIndex) {
 
     if (isStrike(frame[0])) {
         if(isLastFrame) {
-            return maxPin + frame[1] + frame[2];
+            return maxPin + getNumericValueOfRoll(frame[1]) + getNumericValueOfRoll(frame[2]);
         }
         let nextFrame = getNextFrame(frameIndex, scoreSheet);
         if(isStrike(nextFrame[0])) {
+            if(frameIndex === 8) {
+                return maxPin + getNumericValueOfRoll(nextFrame[0]) + getNumericValueOfRoll(nextFrame[1]);
+            }
             let nextNextFrame = getNextFrame(frameIndex+1, scoreSheet);
             return maxPin + maxPin + getNumericValueOfRoll(nextNextFrame[0]);
         } else {
@@ -39,7 +42,7 @@ function isStrike(roll) {
 }
 
 function getNumericValueOfRoll(roll) {
-    return roll === "X" ? maxPin : roll;
+    return isStrike(roll) ? maxPin : roll;
 }
 function getNumericValueOfFrame(frame)
 {
