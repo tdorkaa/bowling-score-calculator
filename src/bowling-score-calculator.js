@@ -16,7 +16,7 @@ function getFrameResult(frame, scoreSheet, frameIndex) {
 
     if (isStrike(frame[0])) {
         if(isLastFrame) {
-            return maxPin + getNumericValueOfRoll(frame[1]) + getNumericValueOfRoll(frame[2]);
+            return isSpare(frame[2]) ? maxPin + maxPin : maxPin + getNumericValueOfRoll(frame[1]) + getNumericValueOfRoll(frame[2]);
         }
         let nextFrame = getNextFrame(frameIndex, scoreSheet);
         if(isStrike(nextFrame[0])) {

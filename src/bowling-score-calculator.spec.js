@@ -76,8 +76,24 @@ describe('bowlingScoreCalculator', function() {
             expect(bowlingScoreCalculator([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X"], [5, "/", 2]])).to.equal(32);
         });
 
-        // it('should return correct result when the last frame is a strike and it is followed by two rolls', function () {
-        //   expect(bowlingScoreCalculator([[0,0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X", "X", 2]])).to.equal(22);
+        it('should return correct result when the last frame is a strike and it is followed by two rolls', function () {
+          expect(bowlingScoreCalculator([[0,0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X", "X", 2]])).to.equal(22);
+        });
+
+        it('should return correct result when the last frame is a strike and it is followed by two strikes', function () {
+          expect(bowlingScoreCalculator([[0,0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X", "X", "X"]])).to.equal(30);
+        });
+
+        it('should return correct result when the last frame is a strike and it is followed by spare', function () {
+          expect(bowlingScoreCalculator([[0,0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X", 2, "/"]])).to.equal(20);
+        });
+
+        it('should return correct result when the last frame is a strike and it is followed by spare', function () {
+          expect(bowlingScoreCalculator([[0,0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X", 2, 2]])).to.equal(14);
+        });
+        //
+        // it.only('should return correct result when all the frames are strikes', function () {
+        //   expect(bowlingScoreCalculator([["X"], ["X"], ["X"], ["X"], ["X"], ["X"], ["X"], ["X"], ["X"], ["X"]])).to.equal(300);
         // });
     });
 
