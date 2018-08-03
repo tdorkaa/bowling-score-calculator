@@ -60,9 +60,13 @@ describe('bowlingScoreCalculator', function() {
             expect(bowlingScoreCalculator([["X"], [5, "/"], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(30);
         });
 
-        // it('should return correct result when a strike is followed by a strike', function () {
-        //     expect(bowlingScoreCalculator([["X"], ["X"], [4, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(42);
-        // });
+        it('should return correct result when a strike is followed by a strike', function () {
+            expect(bowlingScoreCalculator([["X"], ["X"], [4, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(42);
+        });
+
+        it('should return correct result when a strike is followed by a strike', function () {
+            expect(bowlingScoreCalculator([["X"], ["X"], ["X"], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(60);
+        });
 
         // it('should return correct result when the last frame is a strike and it is followed by two rolls', function () {
         //   expect(bowlingScoreCalculator([[0,0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X", "X", 2]])).to.equal(22);

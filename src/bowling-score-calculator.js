@@ -1,3 +1,5 @@
+const maxPin = 10;
+
 function bowlingScoreCalculator(scoreSheet) {
     let result = 0;
     scoreSheet.forEach((frame, frameIndex) => result = result + getFrameResult(frame, scoreSheet, frameIndex));
@@ -5,21 +7,24 @@ function bowlingScoreCalculator(scoreSheet) {
 }
 
 function getFrameResult(frame, scoreSheet, frameIndex) {
-    const maxPin = 10;
     const isLastFrame = frameIndex === 9;
-    const isStrike = frame[0] === "X";
 
     if (isSpare(frame[1])){
         let rollToAdd = isLastFrame ? frame[2] : scoreSheet[frameIndex+1][0];
         return  maxPin + getNumericValueOfRoll(rollToAdd);
     }
 
-    if (isStrike) {
+    if (isStrike(frame[0])) {
         if(isLastFrame) {
             return maxPin + frame[1] + frame[2];
         }
-
-        return maxPin + getNumericValueOfFrame(getNextFrame(frameIndex, scoreSheet));
+        let nextFrame = getNextFrame(frameIndex, scoreSheet);
+        if(isStrike(nextFrame[0])) {
+            let nextNextFrame = getNextFrame(frameIndex+1, scoreSheet);
+            return maxPin + maxPin + getNumericValueOfRoll(nextNextFrame[0]);
+        } else {
+            return maxPin + getNumericValueOfFrame(nextFrame);
+        }
     }
 
     return getNumericValueOfFrame(frame);
@@ -29,12 +34,16 @@ function isSpare(roll) {
     return roll === "/"
 }
 
+function isStrike(roll) {
+    return roll === "X";
+}
+
 function getNumericValueOfRoll(roll) {
-    return roll === "X" ? 10 : roll;
+    return roll === "X" ? maxPin : roll;
 }
 function getNumericValueOfFrame(frame)
 {
-    return isSpare(frame[1]) ? 10 : frame[0] + frame[1];
+    return isSpare(frame[1]) ? maxPin : frame[0] + frame[1];
 }
 
 function getNextFrame(currentFrameIndex, scoreSheet)
