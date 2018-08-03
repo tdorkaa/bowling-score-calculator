@@ -36,4 +36,8 @@ describe('bowlingScoreCalculator', function() {
   it('should return correct result when strike is followed by two rolls', function () {
     expect(bowlingScoreCalculator([["X"], [4, 5], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(28);
   });
+
+  it('should return correct result when the last frame is a strike and it is followed by two rolls', function () {
+    expect(bowlingScoreCalculator([[0,0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X", 2, 2]])).to.equal(14);
+  });
 });
