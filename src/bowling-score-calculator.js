@@ -10,8 +10,8 @@ function getFrameResult(frame, scoreSheet, frameIndex) {
     const isLastFrame = frameIndex === 9;
 
     if (isSpare(frame[1])){
-        let rollToAdd = isLastFrame ? frame[2] : scoreSheet[frameIndex+1][0];
-        return  maxPin + getNumericValueOfRoll(rollToAdd);
+        let nextRoll = isLastFrame ? frame[2] : scoreSheet[frameIndex+1][0];
+        return  maxPin + getNumericValueOfRoll(nextRoll);
     }
 
     if (isStrike(frame[0])) {
@@ -20,10 +20,11 @@ function getFrameResult(frame, scoreSheet, frameIndex) {
         }
         let nextFrame = getNextFrame(frameIndex, scoreSheet);
         if(isStrike(nextFrame[0])) {
-            if(frameIndex === 8) {
-                return maxPin + getNumericValueOfRoll(nextFrame[0]) + getNumericValueOfRoll(nextFrame[1]);
-            }
             let nextNextFrame = getNextFrame(frameIndex+1, scoreSheet);
+            const nineThFrame = frameIndex === 8;
+            if(nineThFrame) {
+                return isStrike(nextFrame[0]) ? 30 : maxPin + getNumericValueOfRoll(nextFrame[0]) + getNumericValueOfRoll(nextFrame[1]);
+            }
             return maxPin + maxPin + getNumericValueOfRoll(nextNextFrame[0]);
         } else {
             return maxPin + getNumericValueOfFrame(nextFrame);

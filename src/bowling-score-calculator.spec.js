@@ -91,10 +91,10 @@ describe('bowlingScoreCalculator', function() {
         it('should return correct result when the last frame is a strike and it is followed by spare', function () {
           expect(bowlingScoreCalculator([[0,0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X", 2, 2]])).to.equal(14);
         });
-        //
-        // it.only('should return correct result when all the frames are strikes', function () {
-        //   expect(bowlingScoreCalculator([["X"], ["X"], ["X"], ["X"], ["X"], ["X"], ["X"], ["X"], ["X"], ["X"]])).to.equal(300);
-        // });
+
+        it('should return correct result when all the frames are strikes', function () {
+          expect(bowlingScoreCalculator([["X"], ["X"], ["X"], ["X"], ["X"], ["X"], ["X"], ["X"], ["X"], ["X", "X", "X"]])).to.equal(300);
+        });
     });
 
 });
