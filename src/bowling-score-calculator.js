@@ -23,12 +23,11 @@ function getFrameResult(frame, scoreSheet, frameIndex) {
             let nextNextFrame = getNextFrame(frameIndex+1, scoreSheet);
             const nineThFrame = frameIndex === 8;
             if(nineThFrame) {
-                return isStrike(nextFrame[0]) ? 30 : maxPin + getNumericValueOfRoll(nextFrame[0]) + getNumericValueOfRoll(nextFrame[1]);
+                return maxPin + getNumericValueOfRoll(nextFrame[0]) + getNumericValueOfRoll(nextFrame[1]);
             }
             return maxPin + maxPin + getNumericValueOfRoll(nextNextFrame[0]);
-        } else {
-            return maxPin + getNumericValueOfFrame(nextFrame);
         }
+        return maxPin + getNumericValueOfFrame(nextFrame);
     }
 
     return getNumericValueOfFrame(frame);

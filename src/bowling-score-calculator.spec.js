@@ -72,6 +72,10 @@ describe('bowlingScoreCalculator', function() {
             expect(bowlingScoreCalculator([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X"], ["X", "X", "X"]])).to.equal(60);
         });
 
+        it('should return correct result when a strike is in the 9th frame followed by a non-bonus frame', function () {
+            expect(bowlingScoreCalculator([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X"], [4, 5]])).to.equal(28);
+        });
+
         it('should return correct result when a strike is in the 9th frame followed by a spare', function () {
             expect(bowlingScoreCalculator([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], ["X"], [5, "/", 2]])).to.equal(32);
         });
